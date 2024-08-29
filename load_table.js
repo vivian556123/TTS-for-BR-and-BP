@@ -23,39 +23,6 @@ function createTextHTML(textContent, flat) {
   return '<div style="white-space: pre-wrap;">' + textContent + '</div>';
 }
 
-
-const fileContentDict = {
-  '2300_131720_000016_000006': 'mr Andrews and I worked in collaboration until the night of the third.',
-  '908_31957_000013_000000': 'When we met first and loved, I did not build Upon the event with marble.',
-  '7176_92135_000055_000000': 'The answer to this will depend upon the length of the play, for upon the length depends the hour at which the curtain rises.',
-  '7021_79740_000018_000002': 'There is a secret-something I would not have them know on any account.',
-  '260_123286_000059_000002': 'The two beasts are fast locked together; I cannot distinguish the one from the other.',
-  '7729_102255_000012_000011': 'The Missouri backwoods men manifested an almost incredible interest in this wonderful gun.',
-  '2300_131720_000016_000006': 'mr Andrews and I worked in collaboration until the night of the third.',
-  '3570_5695_000004_000002': 'The leisure class stands at the head of the social structure in point of reputability; and its manner of life and its standards of worth therefore afford the norm of reputability for the community.',
-  '7176_92135_000055_000000': 'The answer to this will depend upon the length of the play, for upon the length depends the hour at which the curtain rises.',
-  '3575_170457_000029_000000': '"Keswick, march twenty second eighteen thirty seven.',
-  '4507_16021_000035_000009': 'It is so made, that everywhere we feel the sense of punishment.',
-  '7021_79759_000004_000004': 'You have made a life-long change, if not in the very structure, at least in the permanent furnishing of her mind, and performed a work that can never by any possibility be undone.',
-};
-
-const scenarioContentDict = {
-  '2300_131720_000016_000006': 'mr Andrews and I worked in collaboration until the night of the third.',
-  '908_31957_000013_000000': 'When we met first and loved, I did not build Upon the event with marble.',
-  '7176_92135_000055_000000': 'The answer to this will depend upon the length of the play, for upon the length depends the hour at which the curtain rises.',
-  '7021_79740_000018_000002': 'There is a secret-something I would not have them know on any account.',
-  '260_123286_000059_000002': 'The two beasts are fast locked together; I cannot distinguish the one from the other.',
-  '7729_102255_000012_000011': 'The Missouri backwoods men manifested an almost incredible interest in this wonderful gun.',
-  '2300_131720_000016_000006': 'mr Andrews and I worked in collaboration until the night of the third.',
-  '3570_5695_000004_000002': 'The leisure class stands at the head of the social structure in point of reputability; and its manner of life and its standards of worth therefore afford the norm of reputability for the community.',
-  '7176_92135_000055_000000': 'The answer to this will depend upon the length of the play, for upon the length depends the hour at which the curtain rises.',
-  '3575_170457_000029_000000': '"Keswick, march twenty second eighteen thirty seven.',
-  '4507_16021_000035_000009': 'It is so made, that everywhere we feel the sense of punishment.',
-  '7021_79759_000004_000004': 'You have made a life-long change, if not in the very structure, at least in the permanent furnishing of her mind, and performed a work that can never by any possibility be undone.',
-};
-
-
-
 function generate_background_cleanTable(tableId, filenames, page, scenario) {
   let numPerPage = 3;
   let table = document.getElementById(tableId);
@@ -270,20 +237,6 @@ function generate_background_allTable(tableId, filenames, page, prefix_path, sce
   }
 }
 
-
-// Background removal Task results
-
-// filelist = ["2300_131720_000016_000006","908_31957_000013_000000","7176_92135_000055_000000"]
-// generate_background_cleanTable('background-removal-cleanTable', filelist, 1, 'background_removal_preservation_samples/clean/');
-
-// filelist = ["7021_79740_000018_000002", "260_123286_000059_000002", "7729_102255_000012_000011"]
-// generate_background_allTable('background-removal-noiseTable', filelist, 1, 'background_removal_preservation_samples/','noise/');
-
-// filelist = ["2300_131720_000016_000006","7176_92135_000055_000000"]
-// generate_background_allTable('background-removal-reverbTable', filelist, 1, 'background_removal_preservation_samples/','reverb/');
-
-// filelist =  ["","4507_16021_000035_000009","7021_79759_000004_000004"]
-// generate_background_allTable('background-removal-interfereTable', filelist, 1, 'background_removal_preservation_samples/','interference/');
 
 generate_background_onesampleTable('sample_4507_16021_000035_000009_Table',"4507_16021_000035_000009", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
 
