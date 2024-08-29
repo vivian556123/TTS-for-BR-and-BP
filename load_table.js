@@ -86,7 +86,6 @@ function generate_background_cleanTable(tableId, filenames, page, scenario) {
 
 
 function generate_background_onesampleTable(tableId, filename, page, directory, scenarios) {
-  let numPerPage = 4;
   let table = document.getElementById(tableId);
   let nrRows = table.rows.length;
   for (let i = 1; i < nrRows; i++) {
@@ -238,12 +237,76 @@ function generate_background_allTable(tableId, filenames, page, prefix_path, sce
 }
 
 
-generate_background_onesampleTable('sample_4507_16021_000035_000009_Table',"4507_16021_000035_000009", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
 
-generate_background_onesampleTable('sample_7176_92135_000055_000000_Table',"7176_92135_000055_000000", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
 
-generate_background_onesampleTable('sample_7021_79759_000004_000004_Table',"7021_79759_000004_000004", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
+function generate_background_onesampleTable_test(tableId, filename, page, directory, scenarios) {
+  let table = document.getElementById(tableId);
+  let nrRows = table.rows.length;
+  for (let i = 1; i < nrRows; i++) {
+    table.deleteRow(1);
+  }
+  for (let i = 0; i < 4; i++) {
+    let row = table.insertRow(i+1);
+    row.style.height = '80px';
+    if (i < scenarios.length) {
+      const scenario = scenarios[i];
+      let cell = row.insertCell(0);
+      cell.innerHTML = createTextHTML(scenario, false);
+      cell.style.width = "20px";
+      cell.style.textAlign = "center";
 
-generate_background_onesampleTable('sample_2300_131720_000016_000006_Table',"2300_131720_000016_000006", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
+      cell = row.insertCell(1);
+      cell.innerHTML = createAudioHTML(directory+scenario+"/prompt/"+filename+".wav", false);
+      cell.style.textAlign = "center";
 
-generate_background_onesampleTable('sample_7021_79740_000018_000002_Table',"7021_79740_000018_000002", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
+      cell = row.insertCell(2);
+      cell.innerHTML = createAudioHTML(directory+scenario+"/pred_clean/ours/"+ filename+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(3);
+      cell.innerHTML = createAudioHTML(directory+scenario +"/pred_same/ours/"+ filename+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(4);
+      cell.innerHTML = createAudioHTML(directory+scenario +"/baseline1/"+ filename+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(5);
+      cell.innerHTML = createAudioHTML(directory+scenario +"/baseline2/"+ filename+".wav", false);
+      cell.style.textAlign = "center";
+      
+      cell = row.insertCell(6);
+      cell.innerHTML = createAudioHTML(directory+scenario +"/baseline3/"+ filename+".wav", false);
+      cell.style.textAlign = "center";
+    } else {
+      let cell = row.insertCell(0);
+      cell.innerHTML = '<br>';
+      cell = row.insertCell(1);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(2);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(3);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(4);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(5);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+    }
+  }
+}
+
+
+generate_background_onesampleTable_test('sample_4507_16021_000035_000009_Table',"4507_16021_000035_000009", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
+
+generate_background_onesampleTable_test('sample_7176_92135_000055_000000_Table',"7176_92135_000055_000000", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
+
+generate_background_onesampleTable_test('sample_7021_79759_000004_000004_Table',"7021_79759_000004_000004", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
+
+generate_background_onesampleTable_test('sample_2300_131720_000016_000006_Table',"2300_131720_000016_000006", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
+
+generate_background_onesampleTable_test('sample_7021_79740_000018_000002_Table',"7021_79740_000018_000002", 1, "TTS-BR-and-BP-demos/", ["clean","noise","reverb","interference"]);
