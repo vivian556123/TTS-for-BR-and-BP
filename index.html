@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TTS for Background Removal and Preservation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    <script src="load_table.js" defer></script>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      body {
+        font-family: 'Open-Sans', sans-serif;
+        font-weight: 300;
+        background-color: #fff;
+      }
+      td {
+        vertical-align: middle;
+        text-align: justify;
+        width: 0vw;
+        min-width: 250px;
+      }
+      audio {
+        width: 14vw;
+        min-width: 100px;
+      }
+      .content {
+        width: 69vw;
+        padding: 25px 50px;
+        margin: 25px auto;
+        background-color: white;
+        box-shadow: 0px 0px 10px #999;
+        border-radius: 15px;
+        font-family: "Google Sans";
+      }
+      .contentblock {
+        width: 950px;
+        margin: 0 auto;
+        padding: 0;
+        border-spacing: 25px 0;
+      }
+      .contentblock td {
+        background-color: #fff;
+        padding: 25px 50px;
+        vertical-align: top;
+        box-shadow: 0px 0px 10px #999;
+        border-radius: 15px;
+      }
+      a, a:visited {
+        color: #224b8d;
+        font-weight: 300;
+      }
+      #authors {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+      #conference {
+        text-align: center;
+        margin-bottom: 20px;
+        font-style: italic;
+      }
+      #authors a {
+        margin: 0 10px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 35px;
+        font-weight: 300;
+      }
+      h2 {
+        font-size: 30px;
+        font-weight: 300;
+      }
+      h3 {
+        font-size: 25px;
+        font-weight: 300;
+      }
+      h4 {
+        font-size: 20px;
+        font-weight: 300;
+      }
+      code {
+        display: block;
+        padding: 10px;
+        margin: 10px 10px;
+      }
+      p {
+        line-height: 25px;
+        text-align: justify;
+      }
+      p code {
+        display: inline;
+        padding: 0;
+        margin: 0;
+      }
+      #teasers {
+        margin: 0 auto;
+      }
+      #teasers td {
+        margin: 0 auto;
+        text-align: center;
+        padding: 5px;
+      }
+      #teasers img {
+        width: 250px;
+      }
+      #results img {
+        width: 133px;
+      }
+      #seeintodark {
+        margin: 0 auto;
+      }
+      #sift {
+        margin: 0 auto;
+      }
+      #sift img {
+        width: 250px;
+      }
+      .downloadpaper {
+        padding-left: 20px;
+        float: right;
+        text-align: center;
+      }
+      .downloadpaper a {
+        font-weight: bold;
+        text-align: center;
+      }
+      .teaser-img {
+        width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .teaser-gif {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .summary-img {
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .video-iframe {
+        width: 1000;
+        height: 800;
+        margin: auto;
+        display: block;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+      .image {
+        flex-basis: 40%
+      }
+      .text {
+        font-size: 20px;
+        padding-left: 20px;
+      }
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .boxshadow {
+        border: 1px solid;
+        padding: 10px;
+        box-shadow: 2px 2px 5px #888888;
+      }
+      .spacertr {
+        height: 8px;
+      }
+      .spacertd {
+        width: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="text-center">
+        <h1><strong>Advancing Zero-Shot Text-to-Speech System<br>
+          for Background Removal and Preservation<br>
+          with Controllable Masked Speech Prediction </strong></h1>
+        <h5></h5> 
+        <!-- <span style="font-size: 20px">functionDDTSE Zhang<sup>1,2</sup>, Yao Qian<sup>2</sup>, Linfeng Yu<sup>1</sup>, <br>  Long Zhou<sup>2</sup>, Shujie Liu<sup>2</sup>, Yanmin Qian<sup>1</sup>, Michael Zeng<sup>2</sup></span></p>
+        <span style="font-size: 18px"><sup>1</sup>Shanghai Jiao Tong University, China  &emsp;  <sup>2</sup>Microsoft, USA </p>
+         -->
+        <!-- <p class="lead fw-bold">
+          |<a
+            href=""
+            class="btn border-white bg-white fw-bold"
+            >paper</a
+          >|
+        </p> -->
+        <br>
+      </div>
+        <!-- <h4 style="text-align:center;">[<a href="#">Paper</a>] [<a href="pdfs/appendix.pdf">Appendix</a>]</h4> -->
+        <h2 style="text-align:center;">Abstract</h2>
+        <div style="text-align: justify;">
+          The acoustic background plays a crucial role in natural conversation. It provides context and helps listeners understand the environment, but a strong background makes it difficult for listeners to understand spoken words. The appropriate handling of these backgrounds is situation-dependent: while it may be necessary to remove background to ensure speech clarity, preserving the background is sometimes crucial to maintaining the contextual integrity of the speech. Despite recent advancements in zero-shot Text-to-Speech technologies, current systems often struggle with speech containing backgrounds. To address these challenges, we propose a Controllable Masked Speech Prediction strategy coupled with a dual-speaker encoder, utilizing a task-related control signal to guide the prediction of dual background removal and preservation targets. Experimental results demonstrate that our approach enables precise control over the removal or preservation of background across various acoustic conditions and exhibits strong generalization capabilities in unseen scenarios.  </div>
+      </p>
+    </div>
+
+
+
+    <div class="content">
+      <h2 style="text-align: center;">Samples</h2>
+      <div style="text-align: justify;">
+      Scenario: The type of background contained in the input speech prompt<br>
+      Prompt: The input single-speaker speech of target speaker, which may contains environmental noise, reverberation or interfering speakers <br>
+      Ours (BR): Our proposed model with CMSP strategy and Dual speaker encoder in background removal mode <br>
+      Ours (BP): Our proposed model with CMSP strategy and Dual speaker encoder in background preservation mode <br>
+      Baseline1: The Voicebox model. <br>
+      Baseline2: The Voicebox model with an extra Speech Enhancement Model <br>
+      Baseline3: The Voicebox model with MSD strategy <br>
+      <!-- Input is command text and source music, output is edited music -->
+    </div>
+      
+    
+
+    <div style="margin-top: 4vh; text-align: center;">
+      <!-- <h3>Multi speaker noisy scenario</h3> -->
+      <div class="table-responsive pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item active">
+            <a id="sample_7176_92135_000055_000000_" class="page-link" href="#">Sample1</a>
+          </li>
+        </ul>
+        Text: The answer to this will depend upon the length of the play, for upon the length depends the hour at which the curtain rises.<br>
+        <table
+          class="table pt-2"
+          id="sample_7176_92135_000055_000000_Table"
+        >
+          <thead>
+            <tr>
+              <th style="text-align: center;">Scenario</th>
+              <th style="text-align: center;">Prompt</th>
+              <th style="text-align: center">Ours (BR)</th>
+              <th style="text-align: center">Ours (BP)</th>
+              <th style="text-align: center">Baseline1</th>
+              <th style="text-align: center">Baseline2</th>
+              <th style="text-align: center">Baseline3</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div style="margin-top: 4vh; text-align: center;">
+      <!-- <h3>Multi speaker noisy scenario</h3> -->
+      <div class="table-responsive pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item active">
+            <a id="sample_4507_16021_000035_000009_" class="page-link" href="#">Sample2</a>
+          </li>
+        </ul>
+        Text: It is so made, that everywhere we feel the sense of punishment.<br>
+        <table
+          class="table pt-2"
+          id="sample_4507_16021_000035_000009_Table"
+        >
+          <thead>
+            <tr>
+              <th style="text-align: center;">Scenario</th>
+              <th style="text-align: center;">Prompt</th>
+              <th style="text-align: center">Ours (BR)</th>
+              <th style="text-align: center">Ours (BP)</th>
+              <th style="text-align: center">Baseline1</th>
+              <th style="text-align: center">Baseline2</th>
+              <th style="text-align: center">Baseline3</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div style="margin-top: 4vh; text-align: center;">
+      <!-- <h3>Multi speaker noisy scenario</h3> -->
+      <div class="table-responsive pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item active">
+            <a id="sample_7021_79759_000004_000004_" class="page-link" href="#">Sample3</a>
+          </li>
+        </ul>
+        Text: You have made a life-long change, if not in the very structure, at least in the permanent furnishing of her mind, and performed a work that can never by any possibility be undone. <br>
+        <table
+          class="table pt-2"
+          id="sample_7021_79759_000004_000004_Table"
+        >
+          <thead>
+            <tr>
+              <th style="text-align: center;">Scenario</th>
+              <th style="text-align: center;">Prompt</th>
+              <th style="text-align: center">Ours (BR)</th>
+              <th style="text-align: center">Ours (BP)</th>
+              <th style="text-align: center">Baseline1</th>
+              <th style="text-align: center">Baseline2</th>
+              <th style="text-align: center">Baseline3</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div style="margin-top: 4vh; text-align: center;">
+      <!-- <h3>Multi speaker noisy scenario</h3> -->
+      <div class="table-responsive pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item active">
+            <a id="sample_2300_131720_000016_000006_" class="page-link" href="#">Sample4</a>
+          </li>
+        </ul>
+        Text: mr Andrews and I worked in collaboration until the night of the third. <br>
+        <table
+          class="table pt-2"
+          id="sample_2300_131720_000016_000006_Table"
+        >
+          <thead>
+            <tr>
+              <th style="text-align: center;">Scenario</th>
+              <th style="text-align: center;">Prompt</th>
+              <th style="text-align: center">Ours (BR)</th>
+              <th style="text-align: center">Ours (BP)</th>
+              <th style="text-align: center">Baseline1</th>
+              <th style="text-align: center">Baseline2</th>
+              <th style="text-align: center">Baseline3</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    
+
+    <div style="margin-top: 4vh; text-align: center;">
+      <!-- <h3>Multi speaker noisy scenario</h3> -->
+      <div class="table-responsive pt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item active">
+            <a id="sample_7021_79740_000018_000002_" class="page-link" href="#">Sample5</a>
+          </li>
+        </ul>
+        Text: There is a secret-something I would not have them know on any account.<br>
+        <table
+          class="table pt-2"
+          id="sample_7021_79740_000018_000002_Table"
+        >
+          <thead>
+            <tr>
+              <th style="text-align: center;">Scenario</th>
+              <th style="text-align: center;">Prompt</th>
+              <th style="text-align: center">Ours (BR)</th>
+              <th style="text-align: center">Ours (BP)</th>
+              <th style="text-align: center">Baseline1</th>
+              <th style="text-align: center">Baseline2</th>
+              <th style="text-align: center">Baseline3</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+  </body>
+
+</html>
