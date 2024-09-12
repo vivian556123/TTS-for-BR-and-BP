@@ -117,17 +117,10 @@ function generate_background_onesampleTable(tableId, filename, page, directory, 
       cell.innerHTML = createAudioHTML(directory+scenario +"/baseline1/"+ filename+".wav", false);
       cell.style.textAlign = "center";
 
-      if ( i > 0) {
-        cell = row.insertCell(5);
-        cell.innerHTML = createAudioHTML(directory+scenario +"/baseline2/"+ filename+".wav", false);
-        cell.style.textAlign = "center";
-      }
-      else {
-        cell = row.insertCell(5);
-        cell.innerHTML = '/';
-        cell.style.textAlign = "center";
-      }
-      
+      cell = row.insertCell(5);
+      cell.innerHTML = createAudioHTML(directory+scenario +"/baseline2/"+ filename+".wav", false);
+      cell.style.textAlign = "center";
+    
 
       cell = row.insertCell(6);
       cell.innerHTML = createAudioHTML(directory+scenario +"/baseline3/"+ filename+".wav", false);
