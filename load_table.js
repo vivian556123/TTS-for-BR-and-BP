@@ -125,6 +125,10 @@ function generate_background_onesampleTable(tableId, filename, page, directory, 
       cell = row.insertCell(6);
       cell.innerHTML = createAudioHTML(directory+scenario +"/baseline3/"+ filename+".wav", false);
       cell.style.textAlign = "center";
+
+      cell = row.insertCell(7);
+      cell.innerHTML = createAudioHTML(directory+scenario +"/valle/"+ filename+".wav", false);
+      cell.style.textAlign = "center";
     } else {
       let cell = row.insertCell(0);
       cell.innerHTML = '<br>';
